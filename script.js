@@ -25,3 +25,44 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+
+
+
+var $boxOne = $('.box:nth-child(1)'),
+  $boxTwo = $('.box:nth-child(2)'),
+  $boxThree = $('.box:nth-child(3)');
+
+var boxOne = new TimelineMax(),
+  boxTwo = new TimelineMax(),
+  boxThree = new TimelineMax();
+
+
+
+boxThree.to($boxThree, 0.6, {
+  opacity: 1,
+  scale: 1,
+  ease: Back.easeOut
+}, 1.2);
+
+/**
+ * Point Animation
+ */
+$('.point').on('click', function(e) {
+  var getTotalPoints = $('.point').length,
+    getIndex = $(this).index(),
+    getCompleteIndex = $('.point--active').index();
+
+  TweenMax.to($('.bar__fill'), 0.6, {
+    width: (getIndex - 1) / (getTotalPoints - 1) * 100 + '%'
+  });
+
+  if (getIndex => getCompleteIndex) {
+    $('.point--active').addClass('point--complete').removeClass('point--active');
+
+    $(this).addClass('point--active');
+    $(this).prevAll().addClass('point--complete');
+    $(this).nextAll().removeClass('point--complete');
+  }
+});
+
