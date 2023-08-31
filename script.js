@@ -39,11 +39,11 @@ var boxOne = new TimelineMax(),
 
 
 
-boxThree.to($boxThree, 0.6, {
+boxThree.to($boxThree, 0, {
   opacity: 1,
   scale: 1,
   ease: Back.easeOut
-}, 1.2);
+}, 0);
 
 /**
  * Point Animation
